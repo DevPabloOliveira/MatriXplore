@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Resultados das Matrizes, Conjuntos e Relações</h2>
+
+<div class="container">
+    <!-- Matrizes Originais -->
+    {% for matrix_name, matrix_data in results['matrices'].items() %}
+    <div class="matrix">
+        <h3>Matriz {{ matrix_name }}</h3>
+        
+        <!-- Exibe a Matriz Original -->
+        <h4>Matriz Original</h4>
+        <table border="1" cellpadding="5" cellspacing="0">
+            {% for row in matrix_data['original'] %}
+            <tr>
+                {% for cell in row %}
+                <td>{{ cell }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endfor %}
+
+    <!-- Conjuntos -->
+    {% for set_name, elements in results['sets'].items() %}
+    <div class="set">
+        <h3>Conjunto {{ set_name }}</h3>
+        <ul>
+            {% for element in elements %}
+            <li>{{ element }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+
+    <!-- Relações -->
+    {% for relation_name, relation_data in results['relations'].items() %}
+    <div class="relation">
+        <h3>Relação {{ relation_name }}</h3>
+        <table border="1" cellpadding="5" cellspacing="0">
+            {% for item in relation_data %}
+            <tr>
+                <td>{{ item }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endfor %}
+
+    <!-- Matriz Resultante e suas Propriedades -->
+    {% if results.get('combined_matrix') %}
+        <div class="combined_matrix">
+            <h3>Matriz Resultante (Produto)</h3>
+            <table border="1" cellpadding="5" cellspacing="0">
+                {% for row in results['combined_matrix'] %}
+                <tr>
+                    {% for cell in row %}
+                    <td>{{ cell }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+            
+            <h4>Propriedades da Matriz Resultante</h4>
+            <ul>
+                {% for property, value in results['combined_properties'].items() %}
+                <li><strong>{{ property }}:</strong> {{ value }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Exibe a Matriz Transposta da Resultante -->
+        <div class="combined_transpose">
+            <h3>Transposta da Matriz Resultante</h3>
+            <table border="1" cellpadding="5" cellspacing="0">
+                {% for row in results['combined_transpose'] %}
+                <tr>
+                    {% for cell in row %}
+                    <td>{{ cell }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+            
+            <h4>Propriedades da Transposta da Matriz Resultante</h4>
+            <ul>
+                {% for property, value in results['transpose_properties'].items() %}
+                <li><strong>{{ property }}:</strong> {{ value }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% elif results.get('combined_matrix_error') %}
+        <p><strong>Erro:</strong> {{ results['combined_matrix_error'] }}</p>
+    {% endif %}
+</div>
+{% endblock %}
