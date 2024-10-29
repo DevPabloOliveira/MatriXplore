@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Bem-vindo à Aplicação de Processamento de Matrizes, Conjuntos e Relações</h2>
+<p>Esta aplicação permite que você carregue arquivos CSV contendo matrizes, conjuntos e relações, ou insira esses dados manualmente para análise. A aplicação irá processar os dados e verificar propriedades como se a matriz é funcional, injetora, total, sobrejetora, entre outros atributos matemáticos.</p>
+
+<div>
+    <h3>Como Usar:</h3>
+    <ul>
+        <li><strong>Upload de Matrizes:</strong> Permite que você carregue arquivos CSV com suas matrizes e relações para análise.</li>
+        <li><strong>Inserção Manual:</strong> Insira as matrizes e relações manualmente para análise instantânea.</li>
+    </ul>
+
+    <h3>Formato de Arquivo CSV</h3>
+    <p>O arquivo CSV deve ser estruturado conforme o exemplo abaixo:</p>
+    <pre>
+# MATRIZES
+Matriz, R
+1, 0, 0, 0
+0, 1, 0, 0
+0, 0, 1, 0
+0, 0, 0, 1
+
+Matriz, S
+0, 1, 0
+1, 0, 1
+0, 1, 0
+
+# CONJUNTOS
+Conjunto, A, 1, 2, 3, 4
+Conjunto, B, a, b, c, d, e
+
+# RELAÇÕES
+Relação, R, (1, a), (2, c), (3, d)
+Relação, S, (a, x), (c, y), (d, z)
+    </pre>
+</div>
+{% endblock %}
