@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Inserção Manual de Matrizes, Conjuntos e Relações</h2>
+<form action="/process_manual" method="post">
+    <!-- Campo para Inserção de Matrizes -->
+    <label for="matrix">Matriz:</label>
+    <textarea name="matrix" rows="4" cols="50" placeholder="Exemplo:\nMatriz, R\n1, 0, 0\n0, 1, 0\n0, 0, 1"></textarea><br><br>
+    
+    <!-- Campo para Inserção de Conjuntos -->
+    <label for="set">Conjunto:</label>
+    <textarea name="set" rows="4" cols="50" placeholder="Exemplo:\nConjunto, A, 1, 2, 3\nConjunto, B, a, b, c"></textarea><br><br>
+
+    <!-- Campo para Inserção de Relações -->
+    <label for="relation">Relação:</label>
+    <textarea name="relation" rows="4" cols="50" placeholder="Exemplo:\nRelação, R, (1, a), (2, b)"></textarea><br><br>
+    
+    <button type="submit">Processar</button>
+</form>
+{% endblock %}
