@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <!-- Link para Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos gerais */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Sidebar estilos */
+        .sidebar {
+            width: 200px;
+            background-color: #333;
+            color: white;
+            height: 100vh;
+            overflow-y: auto;
+            padding-top: 20px;
+            position: fixed;
+            transition: width 0.3s;
+        }
+        
+        .sidebar.collapsed {
+            width: 60px;
+        }
+
+        .sidebar h3 {
+            text-align: center;
+            color: #fff;
+            font-size: 18px;
+            margin-bottom: 20px;
+            white-space: nowrap;
+        }
+
+        .sidebar a {
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: background 0.2s;
+        }
+
+        .sidebar a:hover {
+            background-color: #575757;
+        }
+
+        .sidebar .icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+        }
+
+        .sidebar.collapsed .text {
+            display: none;
+        }
+
+        .toggle-btn {
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+            color: white;
+            font-size: 18px;
+        }
+
+        /* Conteúdo principal */
+        .content {
+            margin-left: 200px;
+            padding: 20px;
+            width: calc(100% - 200px);
+            overflow-y: auto;
+            height: 100vh;
+            box-sizing: border-box;
+            transition: margin-left 0.3s, width 0.3s;
+        }
+
+        .sidebar.collapsed + .content {
+            margin-left: 60px;
+            width: calc(100% - 60px);
+        }
+
+        /* Header logo e título */
+        .header-logo {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .header-logo img {
+            width: 160px; /* Tamanho do LOGO.png */
+            height: auto;
+        }
+
+        .app-title {
+            font-size: 90px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .app-title .highlight {
+            color: #71c0e9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="toggle-btn" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+        </div>
+        <h3>Menu</h3>
+        <a href="/" class="sidebar-link">
+            <i class="fas fa-home icon"></i>
+            <span class="text">Home</span>
+        </a>
+        <a href="/upload" class="sidebar-link">
+            <i class="fas fa-upload icon"></i>
+            <span class="text">Upload de Matrizes</span>
+        </a>
+        <a href="/manual" class="sidebar-link">
+            <i class="fas fa-keyboard icon"></i>
+            <span class="text">Inserção Manual</span>
+        </a>
+        <a href="/matrices" class="sidebar-link">
+            <i class="fas fa-download icon"></i>
+            <span class="text">Bases de Matrizes</span>
+        </a>
+    </div>
+
+    <!-- Conteúdo Principal -->
+    <div class="content">
+        <!-- Logo e Título -->
+        <div class="header-logo">
+            <img src="/static/img/LOGO.png" alt="Logo à esquerda">
+            <div class="app-title"> 
+                Matri<span class="highlight">X</span>plore
+            </div>
+            <img src="/static/img/logo-ufam-icet.png" alt="Logo à direita" class="logo-right" style="width: 240px; height: auto;">
+        </div>
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- JavaScript para recolher a sidebar -->
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('collapsed');
+        }
+    </script>
+</body>
+</html>
