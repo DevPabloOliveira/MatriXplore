@@ -95,7 +95,7 @@ MatriXplore é uma aplicação web desenvolvida em Python com FastAPI para o pro
     │   ├── main.py                # Lógica principal do FastAPI
     │   ├── utils.py               # Funções de processamento de matrizes
     │   ├── templates/             # Páginas HTML
-    │   └── static/                # Arquivos estáticos (CSS, JS, Imagens)
+    │   └── static/                # Arquivos estáticos
     │
     ├── base-test/                 # Diretório com arquivos CSV para download
     ├── requirements.txt           # Lista de dependências do projeto
