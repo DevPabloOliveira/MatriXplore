@@ -1,6 +1,6 @@
 # MatriXplore
 
-![MatriXplore Logo](app/static/img/LOGO.png)
+<img src="app/static/img/LOGO.png" alt="MatriXplore Logo" width="200">
 
 MatriXplore é uma aplicação web desenvolvida em Python com FastAPI para o processamento e análise de matrizes, conjuntos e relações. Esta aplicação permite aos usuários carregar arquivos CSV contendo dados de matrizes ou inserir esses dados manualmente. Com base nos dados fornecidos, a aplicação analisa propriedades matemáticas das matrizes, como funcionalidade, injetividade, totalidade, entre outras.
 
