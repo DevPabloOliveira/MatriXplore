@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Upload de Arquivos de Matrizes</h2>
+<form action="/process" method="post" enctype="multipart/form-data">
+    <input type="file" name="files" multiple>
+    <button type="submit">Processar</button>
+</form>
+{% endblock %}
